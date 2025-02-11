@@ -4,6 +4,12 @@ __pycache__/
 *.py[cod]
 *$py.class
 
+mydb
+mydb/
+/mydb
+migrations/
+/migrations
+
 # C extensions
 *.so
 
@@ -146,4 +152,3 @@ postgredb
 
 pgdb
 pgdb/
-mydb

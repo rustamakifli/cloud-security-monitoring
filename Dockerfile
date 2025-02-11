@@ -1,21 +1,30 @@
-# Use an official Python runtime as a parent image
+# Use Python 3.9 slim image as base
 FROM python:3.9-slim
 
-# Set the working directory inside the container
+# Set working directory
 WORKDIR /app
 
-# Copy the current directory contents into the container at /app
-COPY . /app
+# Install system dependencies
+RUN apt-get update && apt-get install -y \
+    default-libmysqlclient-dev \
+    pkg-config \
+    build-essential \
+    && rm -rf /var/lib/apt/lists/*
 
-# Install dependencies
+# Copy requirements first to leverage Docker cache
+COPY requirements.txt .
+
+# Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Set environment variables for Flask
-ENV FLASK_APP=app
-ENV FLASK_ENV=development
+# Copy the rest of the application
+COPY . .
 
-# Expose the port the app runs on
-EXPOSE 5000
+# Set environment variables
+ENV FLASK_APP=main.py
+ENV FLASK_ENV=development
+ENV PYTHONUNBUFFERED=1
+
 
 # Command to run the application
 CMD ["flask", "run", "--host=0.0.0.0", "--port=5000"]

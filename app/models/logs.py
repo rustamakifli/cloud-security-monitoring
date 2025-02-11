@@ -1,6 +1,6 @@
 from app.config import db
 from datetime import datetime
-from constants import Status
+from app.models.constants import Status
 
 class Log(db.Model):
     id = db.Column(db.Integer, primary_key=True)

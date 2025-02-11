@@ -11,9 +11,21 @@ services:
     environment:
       MYSQL_DATABASE: ${DB_NAME}
       MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+      MYSQL_ROOT_HOST: '%'
     volumes:
       - ./mydb:/var/lib/mysql
-  
+
+  # web:
+  #   build: .
+  #   ports:
+  #     - "5000:5000"
+  #   depends_on:
+  #     - db
+  #   env_file:
+  #     - .env
+  #   volumes:
+  #     - .:/app
+      
   phpmyadmin:
         depends_on:
           - db

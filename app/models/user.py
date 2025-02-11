@@ -1,6 +1,6 @@
 from app.config import db
 from flask_login import UserMixin
-from constants import UserRole
+from app.models.constants import UserRole
 
 class User(db.Model, UserMixin):
     id = db.Column(db.Integer, primary_key=True)

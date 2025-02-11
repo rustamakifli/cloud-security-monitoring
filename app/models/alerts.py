@@ -1,6 +1,6 @@
 from app.config import db
 from datetime import datetime
-from constants import SeverityLevel
+from app.models.constants import SeverityLevel
 
 class Alert(db.Model):
     id = db.Column(db.Integer, primary_key=True)

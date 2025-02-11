@@ -1,8 +1,15 @@
 from flask import Flask
+import os
+from dotenv import load_dotenv
+
+load_dotenv()
 
 app = Flask(__name__)
 
-app.config['SQLALCHEMY_DATABASE_URI'] = 'mysql://root:123456@db:3306/cloud_security'
+db_uri = f"mysql+mysqlconnector://{os.getenv('MYSQL_USER_USED')}:{os.getenv('MYSQL_ROOT_PASSWORD')}@{os.getenv('DB_HOST')}:{os.getenv('DB_PORT')}/{os.getenv('DB_NAME')}"
+
+
+app.config['SQLALCHEMY_DATABASE_URI'] = db_uri
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 app.config['SECRET_KEY'] = 'top-secret!'
 

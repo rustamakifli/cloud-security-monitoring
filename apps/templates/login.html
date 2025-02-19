@@ -1,26 +1,74 @@
-<!DOCTYPE html>
+<!--
+=========================================================
+Login Form Bootstrap 1
+=========================================================
+
+Product Page: https://uifresh.net
+Copyright 2021 UIFresh (https://uifresh.net)
+Coded by UIFresh
+
+=========================================================
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software. -->
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style/css/login.scss') }}">
-</head>
-<body>
-    <div class="screen-1"><svg class="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="300" height="300" viewbox="0 0 640 480" xml:space="preserve"><g transform="matrix(3.31 0 0 3.31 320.4 240.4)"><circle style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(61,71,133); fill-rule: nonzero; opacity: 1;" cx="0" cy="0" r="40"></circle></g><g transform="matrix(0.98 0 0 0.98 268.7 213.7)"><circle style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;" cx="0" cy="0" r="40"></circle></g><g transform="matrix(1.01 0 0 1.01 362.9 210.9)"><circle style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;" cx="0" cy="0" r="40"></circle></g><g transform="matrix(0.92 0 0 0.92 318.5 286.5)"><circle style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;" cx="0" cy="0" r="40"></circle></g><g transform="matrix(0.16 -0.12 0.49 0.66 290.57 243.57)"><polygon style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;" points="-50,-50 -50,50 50,50 50,-50 "></polygon></g><g transform="matrix(0.16 0.1 -0.44 0.69 342.03 248.34)"><polygon style="stroke: rgb(0,0,0); stroke-width: 0; stroke-dasharray: none; stroke-linecap: butt; stroke-dashoffset: 0; stroke-linejoin: miter; stroke-miterlimit: 4; fill: rgb(255,255,255); fill-rule: nonzero; opacity: 1;" vector-effect="non-scaling-stroke" points="-50,-50 -50,50 50,50 50,-50 "></polygon></g></svg>
-    <div
-        class="email"><label for="email">Email Address</label>
-        <div class="sec-2">
-            <ion-icon name="mail-outline"></ion-icon><input type="email" name="email" placeholder="Username@gmail.com" /></div>
-</div>
-<div class="password"><label for="password">Password</label>
-    <div class="sec-2">
-        <ion-icon name="lock-closed-outline"></ion-icon><input class="pas" type="password" name="password" placeholder="············" />
-        <ion-icon class="show-hide" name="eye-outline"></ion-icon>
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" type="image/png" href="./assets/img/favicon.png">
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./assets/css/bootstrap.min.css">
+    <!-- FontAwesome CSS -->
+    <link rel="stylesheet" href="./assets/css/all.min.css">
+    <link rel="stylesheet" href="./assets/css/uf-style.css">
+    <title>Login Form Bootstrap 1 by UIFresh</title>
+  </head>
+  <body>
+    <div class="uf-form-signin">
+      <div class="text-center">
+        <a href="https://uifresh.net/"><img src="./assets/img/logo-fb.png" alt="" width="100" height="100"></a>
+      <h1 class="text-white h3">Account Login</h1>
+      </div>
+      <form class="mt-4">
+        <div class="input-group uf-input-group input-group-lg mb-3">
+          <span class="input-group-text fa fa-user"></span>
+          <input type="text" class="form-control" placeholder="Username or Email address">
+        </div>
+        <div class="input-group uf-input-group input-group-lg mb-3">
+          <span class="input-group-text fa fa-lock"></span>
+          <input type="password" class="form-control" placeholder="Password">
+        </div>
+        <div class="d-flex mb-3 justify-content-between">
+          <div class="form-check">
+            <input type="checkbox" class="form-check-input uf-form-check-input" id="exampleCheck1">
+            <label class="form-check-label text-white" for="exampleCheck1">Remember Me</label>
+          </div>
+          <a href="#">Forgot password?</a>
+        </div>
+        <div class="d-grid mb-4">
+          <button type="submit" class="btn uf-btn-primary btn-lg">Login</button>
+        </div>
+        <div class="d-flex mb-3">
+            <div class="dropdown-divider m-auto w-25"></div>
+            <small class="text-nowrap text-white">Or login with</small>
+            <div class="dropdown-divider m-auto w-25"></div>
+        </div>
+        <div class="uf-social-login d-flex justify-content-center">
+          <a href="#" class="uf-social-ic" title="Login with Facebook"><i class="fab fa-facebook-f"></i></a>
+          <a href="#" class="uf-social-ic" title="Login with Twitter"><i class="fab fa-twitter"></i></a>
+          <a href="#" class="uf-social-ic" title="Login with Google"><i class="fab fa-google"></i></a>
+        </div>
+        <div class="mt-4 text-center">
+          <span class="text-white">Don't have an account?</span>
+          <a href="register.html">Sign Up</a>
+        </div>
+      </form>
     </div>
-</div><button class="login">Login </button>
-<div class="footer"><span>Sign up</span><span>Forgot Password?</span></div>
-</div>
-    
-</body>
+
+    <!-- JavaScript -->
+
+    <!-- Separate Popper and Bootstrap JS -->
+    <script src="./assets/js/popper.min.js"></script>
+    <script src="./assets/js/bootstrap.min.js"></script>
+  </body>
 </html>

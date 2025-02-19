@@ -12,18 +12,18 @@ def load_user(user_id):
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
-    print("test")
-    # if request.method == "POST":
-    #     email = request.form["email"]
-    #     password = request.form["password"]
-    #     user = User.query.filter_by(email=email).first()
+    if request.method == "POST":
+        email = request.form["email"]
+        password = request.form["password"]
+        user = User.query.filter_by(email=email).first()
 
-    #     if user and user.check_password(password):
-    #         login_user(user)
-    #         flash("Login successful!", "success")
-    #         return redirect(url_for("dashboard"))
+        if user and user.check_password(password):
+            print('user logged inn')
+            login_user(user)
+            flash("Login successful!", "success")
+            return redirect(url_for("dashboard"))
 
-    #     flash("Invalid credentials", "danger")
+        flash("Invalid credentials", "danger")
 
     return render_template("login.html")
 
@@ -33,10 +33,10 @@ def register():
         username = request.form["username"]
         email = request.form["email"]
         password = request.form["password"]
-
+        
         if User.query.filter_by(email=email).first():
             flash("Email already in use", "warning")
-            return redirect(url_for("auth.register"))
+            return redirect(url_for("register"))
 
         new_user = User(username=username, email=email)
         new_user.set_password(password)
@@ -44,7 +44,7 @@ def register():
         db.session.commit()
 
         flash("Registration successful! Please log in.", "success")
-        return redirect(url_for("auth.login"))
+        return redirect(url_for("login"))
 
     return render_template("register.html")
 
@@ -53,4 +53,4 @@ def register():
 def logout():
     logout_user()
     flash("You have been logged out", "info")
-    return redirect(url_for("auth.login"))
+    return redirect(url_for("login"))

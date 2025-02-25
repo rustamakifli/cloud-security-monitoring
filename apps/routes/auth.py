@@ -1,10 +1,10 @@
 from flask import render_template, request, redirect, url_for, flash
-from flask_login import login_user, logout_user, login_required
+from flask_login import login_user, logout_user, login_required, current_user
 from apps.models.user import User
 from apps.config import db, login_manager
 from werkzeug.security import check_password_hash
-from main import app
-from apps.forms import LoginForm, RegisterForm  # Import the forms
+from apps.app import app
+from apps.services.forms import LoginForm, RegisterForm  
 
 
 @login_manager.user_loader
@@ -14,6 +14,12 @@ def load_user(user_id):
 
 @app.route("/login", methods=["GET", "POST"])
 def login():
+    if current_user.is_authenticated:
+        return redirect(url_for("dashboard"))
+    print('getting')
+
+    print("login working")
+
     form = LoginForm()
     if form.validate_on_submit():
         email = form.email.data
@@ -38,6 +44,7 @@ def register():
 
         if User.query.filter_by(email=email).first():
             flash("Email already in use", "warning")
+            print("Email already in use")
             return redirect(url_for("register"))
 
         new_user = User(username=username, email=email)
@@ -56,4 +63,11 @@ def register():
 def logout():
     logout_user()
     flash("You have been logged out", "info")
+    return redirect(url_for("login"))
+
+
+@app.route("/")
+def index():
+    if current_user.is_authenticated:
+        return redirect(url_for("dashboard"))
     return redirect(url_for("login"))

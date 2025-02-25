@@ -1,1 +1,1 @@
-from apps.routes import auth
+from apps.routes import auth, routes

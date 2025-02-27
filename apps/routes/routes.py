@@ -4,7 +4,7 @@ from apps.app import app
 
 
 @app.route("/dashboard")
-@login_required
+# @login_required
 def dashboard():
     print("dashboard working")
     return render_template("dashboard.html")

@@ -31,7 +31,7 @@ def login():
             return redirect(url_for("dashboard"))
         flash("Invalid credentials", "danger")
 
-    return render_template("login.html", form=form)
+    return render_template("signin.html", form=form)
 
 
 @app.route("/register", methods=["GET", "POST"])
@@ -55,7 +55,7 @@ def register():
         flash("Registration successful! Please log in.", "success")
         return redirect(url_for("login"))
 
-    return render_template("register.html", form=form)
+    return render_template("signup.html", form=form)
 
 
 @app.route("/logout")
